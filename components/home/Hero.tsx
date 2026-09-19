@@ -56,11 +56,6 @@ export default function Hero() {
             }}
             className="mb-7 flex items-center gap-3"
           >
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#0755c7] opacity-20" />
-              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#0755c7]" />
-            </span>
-
           </motion.div>
 
           <div className="overflow-hidden">
