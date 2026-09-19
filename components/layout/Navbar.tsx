@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
-import { Menu, MessageCircle, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const links = [
@@ -47,7 +47,7 @@ export default function Navbar() {
             : "bg-transparent"
         }`}
       >
-        <div className="mx-auto flex h-20 max-w-[1500px] items-center justify-between px-5 md:px-8 lg:px-12 xl:px-16">
+        <div className="mx-auto flex h-[84px] max-w-[1500px] items-center justify-between px-5 md:px-8 lg:px-12 xl:px-16">
           {/* LOGO */}
           <a
             href="#inicio"
@@ -66,35 +66,24 @@ export default function Navbar() {
           </a>
 
           {/* DESKTOP NAV */}
-          <nav className="hidden items-center gap-9 lg:flex">
+          <nav className="hidden items-center gap-10 lg:flex">
             {links.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-sm font-medium text-slate-700 transition-colors hover:text-[#0755c7]"
+                className="relative text-sm font-medium text-slate-700 transition-colors duration-300 hover:text-[#0755c7]"
               >
                 {link.label}
               </a>
             ))}
           </nav>
 
-          {/* DESKTOP CTA */}
-          <a
-            href="https://wa.me/351937533019"
-            target="_blank"
-            rel="noreferrer"
-            className="hidden items-center gap-2 rounded-full bg-[#0755c7] px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#063f98] hover:shadow-lg lg:flex"
-          >
-            <MessageCircle size={17} />
-            WhatsApp
-          </a>
-
           {/* MOBILE BUTTON */}
           <button
             type="button"
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
-            className="relative z-[60] flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white/80 text-[#062b61] backdrop-blur lg:hidden"
+            className="relative z-[60] flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white/80 text-[#062b61] backdrop-blur transition-colors hover:border-[#0755c7] lg:hidden"
           >
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -105,10 +94,18 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            initial={{
+              opacity: 0,
+            }}
+            animate={{
+              opacity: 1,
+            }}
+            exit={{
+              opacity: 0,
+            }}
+            transition={{
+              duration: 0.25,
+            }}
             className="fixed inset-0 z-40 bg-[#f8fbff] lg:hidden"
           >
             <div className="flex h-full flex-col px-5 pb-8 pt-28">
@@ -129,21 +126,20 @@ export default function Navbar() {
                     transition={{
                       duration: 0.45,
                       delay: 0.05 + index * 0.06,
+                      ease: [0.22, 1, 0.36, 1],
                     }}
-                    className="border-b border-slate-200 py-5 text-[2rem] font-semibold tracking-[-0.04em] text-[#062b61]"
+                    className="border-b border-slate-200 py-5 text-[2rem] font-semibold tracking-[-0.04em] text-[#062b61] transition-colors hover:text-[#0755c7]"
                   >
                     {link.label}
                   </motion.a>
                 ))}
               </nav>
 
-              <motion.a
-                href="https://wa.me/351937533019"
-                target="_blank"
-                rel="noreferrer"
+              {/* MOBILE BOTTOM INFO */}
+              <motion.div
                 initial={{
                   opacity: 0,
-                  y: 25,
+                  y: 20,
                 }}
                 animate={{
                   opacity: 1,
@@ -151,12 +147,18 @@ export default function Navbar() {
                 }}
                 transition={{
                   delay: 0.3,
+                  duration: 0.5,
                 }}
-                className="flex items-center justify-center gap-2 rounded-full bg-[#0755c7] px-6 py-4 font-semibold text-white"
+                className="border-t border-slate-200 pt-6"
               >
-                <MessageCircle size={19} />
-                Falar connosco
-              </motion.a>
+                <div className="text-xs font-bold uppercase tracking-[0.18em] text-[#0755c7]">
+                  Lavandaria Bigblue
+                </div>
+
+                <div className="mt-2 text-sm text-slate-500">
+                  Cascais · Desde 2020
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         )}
