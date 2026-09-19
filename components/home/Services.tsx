@@ -11,7 +11,10 @@ const services = [
     description:
       "Tratamento profissional da sua roupa, com atenção a cada detalhe e a cada tecido.",
     image: "/services/lavandaria.png",
-    imageAlt: "Serviço de lavandaria Bigblue",
+    imageAlt: "Serviço de lavandaria",
+    bg: "from-[#dff3ff] via-[#c9ecff] to-[#a8dfff]",
+    imageClass: "w-[220px] sm:w-[250px] md:w-[270px]",
+    imageWrapClass: "justify-center",
   },
   {
     number: "02",
@@ -19,7 +22,10 @@ const services = [
     description:
       "Cuidados especializados para peças delicadas e tecidos que exigem tratamento específico.",
     image: "/services/limpeza-seco.png",
-    imageAlt: "Serviço de limpeza a seco Bigblue",
+    imageAlt: "Serviço de limpeza a seco",
+    bg: "from-[#eaf7ff] via-[#dff3ff] to-[#bde6ff]",
+    imageClass: "w-[220px] sm:w-[250px] md:w-[270px]",
+    imageWrapClass: "justify-center",
   },
   {
     number: "03",
@@ -27,7 +33,11 @@ const services = [
     description:
       "Roupa impecavelmente engomada, pronta a vestir e cuidada até ao último detalhe.",
     image: "/services/engomadoria.png",
-    imageAlt: "Serviço de engomadoria Bigblue",
+    imageAlt: "Serviço de engomadoria",
+    bg: "from-[#edf8ff] via-[#d9f1ff] to-[#bae8ff]",
+    imageClass:
+      "w-[300px] sm:w-[330px] md:w-[360px] -translate-y-8 md:-translate-y-10",
+    imageWrapClass: "justify-center",
   },
   {
     number: "04",
@@ -35,7 +45,11 @@ const services = [
     description:
       "Recolhemos e entregamos a sua roupa para tornar todo o processo mais simples.",
     image: "/services/entregas.png",
-    imageAlt: "Serviço de entregas e recolhas Bigblue",
+    imageAlt: "Serviço de recolhas e entregas",
+    bg: "from-[#dff4ff] via-[#cbeaff] to-[#aee0f4]",
+    imageClass:
+      "w-[210px] sm:w-[230px] md:w-[250px] -translate-y-1 md:-translate-y-2",
+    imageWrapClass: "justify-center",
   },
   {
     number: "05",
@@ -43,7 +57,11 @@ const services = [
     description:
       "Pequenos arranjos e reparações para prolongar a vida das suas peças favoritas.",
     image: "/services/costura.png",
-    imageAlt: "Serviço de costura Bigblue",
+    imageAlt: "Serviço de costura",
+    bg: "from-[#e8f7ff] via-[#d8f0ff] to-[#b7e6ff]",
+    imageClass:
+      "w-[300px] sm:w-[350px] md:w-[440px] -translate-y-4 md:-translate-y-8",
+    imageWrapClass: "justify-center",
   },
 ];
 
@@ -98,7 +116,7 @@ export default function Services() {
           </motion.div>
 
           {/* RIGHT */}
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-8 md:grid-cols-2">
             {services.map((service, index) => {
               const isLast = index === services.length - 1;
 
@@ -125,101 +143,94 @@ export default function Services() {
                   whileHover={{
                     y: -6,
                   }}
-                  className={`group relative ${
+                  className={`group relative overflow-visible ${
                     isLast ? "md:col-span-2" : ""
                   }`}
                 >
-                  {/* =================================================
-                      IMAGE BACKGROUND
-                  ================================================= */}
-
+                  {/* VISUAL AREA */}
                   <div
-                    className={`relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#dff3ff] via-[#ccecff] to-[#8ed8ef] ${
-                      isLast
-                        ? "h-[280px] md:h-[330px]"
-                        : "h-[280px] sm:h-[320px]"
+                    className={`relative ${
+                      isLast ? "h-[320px] md:h-[360px]" : "h-[320px]"
                     }`}
                   >
-                    {/* decorative background */}
-                    <div className="absolute -right-16 -top-16 h-52 w-52 rounded-full bg-white/30" />
+                    {/* BACK CARD */}
+                    <div
+                      className={`absolute bottom-0 left-0 right-0 h-[78%] rounded-[2rem] bg-gradient-to-br ${service.bg}`}
+                    >
+                      {/* CIRCLE LEFT */}
+                      <div className="absolute bottom-6 left-4 h-24 w-24 rounded-full bg-[#0755c7]/10 md:bottom-6 md:left-6 md:h-28 md:w-28" />
 
-                    <div className="absolute -bottom-16 -left-12 h-44 w-44 rounded-full bg-[#0755c7]/10" />
+                      {/* CIRCLE RIGHT */}
+                      <div className="absolute right-4 top-4 h-24 w-24 rounded-full bg-white/20 md:right-6 md:top-6 md:h-28 md:w-28" />
 
-                    <div className="absolute right-7 top-7 z-20">
-                      <span className="text-xs font-bold tracking-[0.18em] text-[#0755c7]/55">
-                        {service.number}
-                      </span>
+                      {/* NUMBER */}
+                      <div className="absolute right-6 top-6 z-20">
+                        <span className="text-xs font-bold tracking-[0.16em] text-[#0755c7]/70">
+                          {service.number}
+                        </span>
+                      </div>
                     </div>
 
-                    {/* IMAGE */}
+                    {/* IMAGE COMING OUT */}
                     <motion.div
-                      className={`absolute inset-0 flex items-end ${
-                        isLast
-                          ? "justify-center md:justify-end md:pr-[10%]"
-                          : "justify-center"
-                      }`}
                       whileHover={{
-                        scale: 1.035,
+                        y: -4,
+                        scale: 1.02,
                       }}
                       transition={{
-                        duration: 0.5,
+                        duration: 0.45,
                         ease: [0.22, 1, 0.36, 1],
                       }}
+                      className={`absolute inset-x-0 bottom-0 z-20 flex ${service.imageWrapClass}`}
                     >
                       <Image
                         src={service.image}
                         alt={service.imageAlt}
-                        fill
-                        sizes={
-                          isLast
-                            ? "(max-width: 768px) 100vw, 65vw"
-                            : "(max-width: 768px) 100vw, 35vw"
-                        }
-                        className="object-contain object-bottom transition-transform duration-700 group-hover:scale-[1.04]"
+                        width={460}
+                        height={460}
+                        className={`
+                          h-auto
+                          object-contain
+                          drop-shadow-[0_18px_40px_rgba(6,43,97,0.16)]
+                          transition-transform
+                          duration-700
+                          group-hover:scale-[1.03]
+                          ${service.imageClass}
+                        `}
+                        priority={index < 2}
                       />
                     </motion.div>
                   </div>
 
-                  {/* =================================================
-                      CONTENT CARD
-                      negative margin = overlapping effect
-                  ================================================= */}
-
+                  {/* CONTENT CARD */}
                   <div
-                    className={`relative z-20 mx-3 -mt-8 rounded-[1.75rem] border border-slate-200/80 bg-white/95 p-6 shadow-[0_18px_55px_rgba(6,43,97,0.10)] backdrop-blur-xl transition-shadow duration-300 group-hover:shadow-[0_28px_70px_rgba(6,43,97,0.15)] md:mx-4 md:p-7 ${
-                      isLast
-                        ? "md:mx-6 md:-mt-12 md:grid md:grid-cols-[1fr_auto] md:items-end md:gap-12"
-                        : ""
+                    className={`relative z-30 mx-4 -mt-4 rounded-[1.8rem] border border-slate-200/80 bg-white p-6 shadow-[0_18px_55px_rgba(6,43,97,0.10)] transition-shadow duration-300 group-hover:shadow-[0_28px_70px_rgba(6,43,97,0.16)] md:p-7 ${
+                      isLast ? "md:mx-6 md:-mt-8" : ""
                     }`}
                   >
-                    <div>
-                      <span className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[#0755c7]">
-                        Serviço {service.number}
-                      </span>
+                    <div className="flex items-start justify-between gap-5">
+                      <div>
+                        <span className="text-[0.68rem] font-bold uppercase tracking-[0.18em] text-[#0755c7]">
+                          Serviço {service.number}
+                        </span>
 
-                      <h3 className="mt-3 text-2xl font-semibold tracking-[-0.04em] text-[#062b61]">
-                        {service.title}
-                      </h3>
+                        <h3 className="mt-3 text-2xl font-semibold tracking-[-0.04em] text-[#062b61]">
+                          {service.title}
+                        </h3>
+                      </div>
 
-                      <p
-                        className={`mt-3 text-sm leading-6 text-slate-600 md:text-base ${
-                          isLast ? "max-w-xl" : "max-w-md"
-                        }`}
-                      >
-                        {service.description}
-                      </p>
-                    </div>
-
-                    {/* ARROW */}
-                    <div
-                      className={`mt-7 flex ${
-                        isLast ? "md:mt-0" : "justify-end"
-                      }`}
-                    >
-                      <div className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-[#f8fbff] text-[#062b61] transition-all duration-300 group-hover:rotate-45 group-hover:border-[#0755c7] group-hover:bg-[#0755c7] group-hover:text-white">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-[#f8fbff] text-[#062b61] transition-all duration-300 group-hover:rotate-45 group-hover:border-[#0755c7] group-hover:bg-[#0755c7] group-hover:text-white">
                         <ArrowUpRight size={17} />
                       </div>
                     </div>
+
+                    <p
+                      className={`mt-4 text-sm leading-6 text-slate-600 md:text-base ${
+                        isLast ? "max-w-2xl" : "max-w-md"
+                      }`}
+                    >
+                      {service.description}
+                    </p>
                   </div>
                 </motion.article>
               );
