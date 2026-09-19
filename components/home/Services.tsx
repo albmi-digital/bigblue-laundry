@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
+import { Highlighter } from "../ui/highlighter";
 
 const services = [
   {
@@ -102,17 +103,13 @@ export default function Services() {
             </h2>
 
             <p className="mt-6 max-w-md text-base leading-7 text-slate-600 md:text-lg">
-              Um serviço completo de tratamento de roupa, pensado para combinar
-              qualidade, cuidado e conveniência.
+              Um serviço completo de tratamento de roupa, pensado para combinar{" "}
+              <Highlighter action="highlight" color="#D7EFFE">
+                qualidade, cuidado e conveniência.
+              </Highlighter>
             </p>
 
-            <div className="mt-8 hidden lg:block">
-              <div className="h-px w-full max-w-xs bg-slate-200" />
 
-              <p className="mt-5 max-w-xs text-sm leading-6 text-slate-500">
-                Desde 2020, em Cascais.
-              </p>
-            </div>
           </motion.div>
 
           {/* RIGHT */}
@@ -191,7 +188,7 @@ export default function Services() {
                         className={`
                           h-auto
                           object-contain
-                          drop-shadow-[0_18px_40px_rgba(6,43,97,0.16)]
+                          drop-shadow-[0_16px_34px_rgba(6,43,97,0.13)]
                           transition-transform
                           duration-700
                           group-hover:scale-[1.03]
@@ -204,12 +201,29 @@ export default function Services() {
 
                   {/* CONTENT CARD */}
                   <div
-                    className={`relative z-30 mx-4 -mt-4 rounded-[1.8rem] border border-slate-200/80 bg-white p-6 shadow-[0_18px_55px_rgba(6,43,97,0.10)] transition-shadow duration-300 group-hover:shadow-[0_28px_70px_rgba(6,43,97,0.16)] md:p-7 ${
+                    className={`relative z-30 mx-4 -mt-4 rounded-[1.8rem] border border-slate-200/80 bg-white p-6 shadow-[0_14px_42px_rgba(6,43,97,0.075)] transition-shadow duration-300 group-hover:shadow-[0_20px_52px_rgba(6,43,97,0.11)] md:p-7 ${
                       isLast ? "md:mx-6 md:-mt-8" : ""
                     }`}
                   >
                     <div className="flex items-start justify-between gap-5">
-                      <div>
+                      <motion.div
+                        initial={{
+                          opacity: 0,
+                          y: 10,
+                        }}
+                        whileInView={{
+                          opacity: 1,
+                          y: 0,
+                        }}
+                        viewport={{
+                          once: true,
+                          amount: 0.4,
+                        }}
+                        transition={{
+                          duration: 0.55,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                      >
                         <span className="text-[0.68rem] font-bold uppercase tracking-[0.18em] text-[#0755c7]">
                           Serviço {service.number}
                         </span>
@@ -217,20 +231,37 @@ export default function Services() {
                         <h3 className="mt-3 text-2xl font-semibold tracking-[-0.04em] text-[#062b61]">
                           {service.title}
                         </h3>
-                      </div>
+                      </motion.div>
 
                       <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-[#f8fbff] text-[#062b61] transition-all duration-300 group-hover:rotate-45 group-hover:border-[#0755c7] group-hover:bg-[#0755c7] group-hover:text-white">
                         <ArrowUpRight size={17} />
                       </div>
                     </div>
 
-                    <p
+                    <motion.p
+                      initial={{
+                        opacity: 0,
+                        y: 10,
+                      }}
+                      whileInView={{
+                        opacity: 1,
+                        y: 0,
+                      }}
+                      viewport={{
+                        once: true,
+                        amount: 0.4,
+                      }}
+                      transition={{
+                        duration: 0.6,
+                        delay: 0.08,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
                       className={`mt-4 text-sm leading-6 text-slate-600 md:text-base ${
                         isLast ? "max-w-2xl" : "max-w-md"
                       }`}
                     >
                       {service.description}
-                    </p>
+                    </motion.p>
                   </div>
                 </motion.article>
               );
