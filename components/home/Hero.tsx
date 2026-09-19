@@ -61,9 +61,6 @@ export default function Hero() {
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#0755c7]" />
             </span>
 
-            <span className="text-[0.7rem] font-bold uppercase tracking-[0.22em] text-[#0755c7] md:text-xs">
-              Cascais · Desde 2020
-            </span>
           </motion.div>
 
           <div className="overflow-hidden">
