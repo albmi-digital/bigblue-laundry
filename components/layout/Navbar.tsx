@@ -154,10 +154,6 @@ export default function Navbar() {
                 <div className="text-xs font-bold uppercase tracking-[0.18em] text-[#0755c7]">
                   Lavandaria Bigblue
                 </div>
-
-                <div className="mt-2 text-sm text-slate-500">
-                  Cascais · Desde 2020
-                </div>
               </motion.div>
             </div>
           </motion.div>

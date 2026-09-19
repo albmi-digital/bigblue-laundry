@@ -149,7 +149,7 @@ export default function Hero() {
           >
             <a
               href="#servicos"
-              className="group flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#6891CC] px-7 py-4 font-semibold text-white shadow-[0_15px_35px_rgba(7,85,199,0.18)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#064aaa] hover:shadow-[0_20px_45px_rgba(7,85,199,0.25)]"
+              className="group flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#CCD8EB] px-7 py-4 font-semibold text-white shadow-[0_15px_35px_rgba(7,85,199,0.18)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#064aaa] hover:shadow-[0_20px_45px_rgba(7,85,199,0.25)]"
             >
               Conhecer serviços
               <ArrowRight
