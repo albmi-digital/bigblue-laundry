@@ -5,6 +5,7 @@ import Gallery from "@/components/home/Gallery";
 import Hero from "@/components/home/Hero";
 import Pickup from "@/components/home/Pickup";
 import Process from "@/components/home/Process";
+import Testimonials from "@/components/home/Testimonials";
 import Services from "@/components/home/Services";
 
 import Footer from "@/components/layout/Footer";
@@ -25,7 +26,10 @@ export default function Home() {
 
       <About />
 
-      <Pickup />
+      <Testimonials />
+
+      {/* <Pickup /> */}
+
 
       <FinalCTA />
 

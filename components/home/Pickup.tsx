@@ -183,11 +183,11 @@ export default function Pickup() {
                 href="https://wa.me/351937533019"
                 target="_blank"
                 rel="noreferrer"
-                className="group flex min-h-14 items-center justify-center gap-3 rounded-full bg-white px-7 py-4 font-semibold text-[#0755c7] shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                className="flex min-h-14 items-center justify-center rounded-full border border-white/25 bg-white/[0.06] px-7 py-4 font-semibold text-white backdrop-blur transition-all duration-300 hover:bg-white/[0.12]"
               >
                 <FaWhatsapp size={20} />
 
-                Pedir informação
+                 Pedir informação
 
                 <ArrowRight
                   size={17}
