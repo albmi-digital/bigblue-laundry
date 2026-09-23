@@ -1,35 +1,40 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import { motion } from "motion/react";
-import { Minus, Plus, Star } from "lucide-react";
+import { Star } from "lucide-react";
 
 const testimonials = [
   {
     text: "Serviço impecável. A roupa veio perfeitamente tratada, muito bem apresentada e dentro do prazo combinado.",
-    name: "Cliente Bigblue",
-    role: "Cascais",
-    image: "/avatar/human-1.jpg",
-  },
-  {
-    text: "A recolha e entrega facilitam imenso o dia a dia. Todo o processo foi simples, rápido e muito profissional.",
-    name: "Cliente Bigblue",
+    name: "João Ferreira",
     role: "Cascais",
     image: "/avatar/human-2.jpg",
   },
   {
-    text: "Tenho peças delicadas que exigem bastante cuidado e o resultado tem sido sempre excelente.",
-    name: "Cliente Bigblue",
+    text: "A recolha e entrega facilitam imenso o dia a dia. Todo o processo foi simples, rápido e muito profissional.",
+    name: "Miguel Santos",
     role: "Cascais",
     image: "/avatar/human-3.jpg",
+  },
+  {
+    text: "Tenho peças delicadas que exigem bastante cuidado e o resultado tem sido sempre excelente.",
+    name: "Ricardo Almeida",
+    role: "Cascais",
+    image: "/avatar/human-4.jpg",
   },
 ];
 
 export default function Testimonials() {
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+
   return (
     <section className="bg-white px-4 py-20 md:px-8 md:py-28 lg:px-12 xl:px-16">
       <div className="mx-auto max-w-[1500px]">
-        {/* HERO */}
+        {/* =========================================================
+            HERO
+        ========================================================= */}
         <motion.div
           initial={{
             opacity: 0,
@@ -58,7 +63,7 @@ export default function Testimonials() {
             className="object-cover"
           />
 
-          {/* OVERLAY */}
+          {/* OVERLAYS */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#062b61]/65 via-[#062b61]/20 to-[#062b61]/10" />
 
           <div className="absolute inset-0 bg-gradient-to-t from-[#062b61]/45 via-transparent to-transparent" />
@@ -98,7 +103,9 @@ export default function Testimonials() {
             Testemunhos
           </motion.h2>
 
-          {/* GLASS TESTIMONIAL */}
+          {/* =========================================================
+              GLASS TESTIMONIAL
+          ========================================================= */}
           <motion.div
             initial={{
               opacity: 0,
@@ -161,12 +168,12 @@ export default function Testimonials() {
               em todas as etapas.
             </p>
 
-            {/* CLIENT */}
+            {/* MAIN CLIENT */}
             <div className="mt-6 flex items-center gap-3">
               <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border border-white/40">
                 <Image
                   src="/avatar/human-1.jpg"
-                  alt="Cliente Bigblue"
+                  alt="Mariana Costa"
                   fill
                   sizes="44px"
                   className="object-cover"
@@ -175,7 +182,7 @@ export default function Testimonials() {
 
               <div>
                 <div className="text-sm font-semibold">
-                  Cliente Bigblue
+                  Mariana Costa
                 </div>
 
                 <div className="text-xs text-white/70">
@@ -185,7 +192,9 @@ export default function Testimonials() {
             </div>
           </motion.div>
 
-          {/* RATING */}
+          {/* =========================================================
+              RATING
+          ========================================================= */}
           <motion.div
             initial={{
               opacity: 0,
@@ -230,8 +239,20 @@ export default function Testimonials() {
           </motion.div>
         </motion.div>
 
-        {/* TESTIMONIAL CARDS */}
-        <div className="mt-4 grid gap-4 lg:grid-cols-[1.35fr_0.65fr_0.65fr]">
+        {/* =========================================================
+            TESTIMONIAL CARDS
+        ========================================================= */}
+        <div
+          className="
+            mt-4
+            grid
+            gap-4
+            lg:flex
+            lg:h-[320px]
+            lg:items-stretch
+          "
+          onMouseLeave={() => setHoveredCard(null)}
+        >
           {testimonials.map((testimonial, index) => (
             <motion.article
               key={`${testimonial.name}-${index}`}
@@ -243,89 +264,91 @@ export default function Testimonials() {
                 opacity: 1,
                 y: 0,
               }}
+              animate={{
+                flexGrow:
+                  hoveredCard === null
+                    ? 1
+                    : hoveredCard === index
+                      ? 1.65
+                      : 0.68,
+              }}
               viewport={{
                 once: true,
                 amount: 0.2,
               }}
               transition={{
-                duration: 0.65,
-                delay: index * 0.08,
-                ease: [0.22, 1, 0.36, 1],
+                opacity: {
+                  duration: 0.65,
+                  delay: index * 0.08,
+                  ease: [0.22, 1, 0.36, 1],
+                },
+
+                y: {
+                  duration: 0.65,
+                  delay: index * 0.08,
+                  ease: [0.22, 1, 0.36, 1],
+                },
+
+                flexGrow: {
+                  duration: 0.5,
+                  ease: [0.22, 1, 0.36, 1],
+                },
               }}
-              className={`
+              onMouseEnter={() => setHoveredCard(index)}
+              className="
                 group
                 relative
                 flex
                 min-h-[290px]
                 flex-col
                 justify-between
+                overflow-hidden
                 rounded-[2rem]
                 border
                 border-[#062b61]/5
                 bg-[#f8f8f1]
                 p-7
-                transition-all
-                duration-500
-                hover:-translate-y-1
-                hover:shadow-[0_14px_40px_rgba(6,43,97,0.06)]
                 md:p-8
-                ${
-                  index === 0
-                    ? "lg:min-h-[320px]"
-                    : ""
-                }
-              `}
+                lg:h-full
+                lg:min-h-0
+                lg:min-w-0
+                lg:basis-0
+              "
             >
               {/* TOP */}
               <div>
-                <div className="flex items-center justify-between">
-                  {/* DOTS */}
-                  <div className="flex gap-1">
-                    {[1, 2, 3, 4, 5].map((dot) => (
-                      <span
-                        key={dot}
-                        className="h-2 w-2 rounded-full bg-[#74d4e8]"
-                      />
-                    ))}
-                  </div>
-
-                  {/* PLUS / MINUS */}
-                  <div
-                    className="
-                      flex
-                      h-7
-                      w-7
-                      items-center
-                      justify-center
-                      rounded-full
-                      border
-                      border-[#062b61]/10
-                      text-[#062b61]/60
-                    "
-                  >
-                    {index === 0 ? (
-                      <Minus size={14} />
-                    ) : (
-                      <Plus size={14} />
-                    )}
-                  </div>
+                {/* DOTS */}
+                <div className="flex gap-1">
+                  {[1, 2, 3, 4, 5].map((dot) => (
+                    <span
+                      key={dot}
+                      className="h-2 w-2 rounded-full bg-[#74d4e8]"
+                    />
+                  ))}
                 </div>
 
-                {/* TESTIMONIAL */}
-                <p
-                  className={`
+                {/* TEXT */}
+                <motion.p
+                  animate={{
+                    opacity:
+                      hoveredCard === null || hoveredCard === index
+                        ? 1
+                        : 0.72,
+                  }}
+                  transition={{
+                    duration: 0.3,
+                  }}
+                  className="
                     mt-6
+                    text-base
+                    leading-7
                     tracking-[-0.025em]
                     text-[#062b61]
-                    ${
-                      index === 0
-                        ? "text-xl leading-7 md:text-2xl md:leading-8"
-                        : "text-sm leading-6 md:text-base"
-                    }
-                  `}
+                    md:text-lg
+                  "
                 >
                   “{testimonial.text}”
-                </p>
+                </motion.p>
               </div>
 
               {/* USER */}
@@ -340,15 +363,26 @@ export default function Testimonials() {
                   />
                 </div>
 
-                <div>
-                  <div className="text-sm font-semibold text-[#062b61]">
+                <motion.div
+                  className="min-w-0"
+                  animate={{
+                    opacity:
+                      hoveredCard === null || hoveredCard === index
+                        ? 1
+                        : 0.78,
+                  }}
+                  transition={{
+                    duration: 0.3,
+                  }}
+                >
+                  <div className="truncate text-sm font-semibold text-[#062b61]">
                     {testimonial.name}
                   </div>
 
                   <div className="mt-0.5 text-xs text-slate-500">
                     {testimonial.role}
                   </div>
-                </div>
+                </motion.div>
               </div>
             </motion.article>
           ))}

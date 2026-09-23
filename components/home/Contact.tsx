@@ -28,6 +28,12 @@ const schedule = [
   },
 ];
 
+const GOOGLE_MAPS_URL =
+  "https://www.google.com/maps/place/Lavandaria+Bigblue/@38.7066118,-9.4523617,449m/data=!3m1!1e3!4m22!1m15!4m14!1m6!1m2!1s0xd1ec5bf321ab84f:0x5de1de8ffd6f60b1!2sLavandaria+Bigblue,+Vila+Bicuda+Aldeamento+Tur%C3%ADstico+Loja+81.07,+2750-689+Cascais!2m2!1d-9.4524822!2d38.705827!1m6!1m2!1s0xd1ec5bf321ab84f:0x5de1de8ffd6f60b1!2sLavandaria+Bigblue,+Vila+Bicuda+Aldeamento+Tur%C3%ADstico+Loja+81.07,+2750-689+Cascais!2m2!1d-9.4524822!2d38.705827!3m5!1s0xd1ec5bf321ab84f:0x5de1de8ffd6f60b1!8m2!3d38.705827!4d-9.4524822!16s%2Fg%2F11p_1d5tkr";
+
+const GOOGLE_MAPS_EMBED_URL =
+  "https://www.google.com/maps?output=embed&q=Lavandaria%20Bigblue%2C%20Vila%20Bicuda%20Aldeamento%20Tur%C3%ADstico%20Loja%2081.07%2C%202750-689%20Cascais%2C%20Portugal&ll=38.705827,-9.4524822&z=18";
+
 export default function Contact() {
   return (
     <section
@@ -60,7 +66,9 @@ export default function Contact() {
 
           <h2 className="mt-5 max-w-4xl text-[clamp(3rem,7vw,6.5rem)] font-semibold leading-[0.93] tracking-[-0.065em] text-[#062b61]">
             Estamos em Cascais.
-            <span className="block text-[#0755c7]">Fale connosco.</span>
+            <span className="block text-[#0755c7]">
+              Fale connosco.
+            </span>
           </h2>
         </motion.div>
 
@@ -84,7 +92,7 @@ export default function Contact() {
               transition={{
                 duration: 0.7,
               }}
-              className="rounded-[2rem] bg-white p-7 shadow-[0_15px_50px_rgba(6,43,97,0.06)] md:p-9"
+              className="rounded-[2rem] bg-white p-7 shadow-[0_15px_50px_rgba(6,43,97,0.05)] md:p-9"
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#eaf4ff] text-[#0755c7]">
                 <MapPin size={20} />
@@ -95,15 +103,15 @@ export default function Contact() {
               </h3>
 
               <p className="mt-4 max-w-md leading-7 text-slate-600">
-                Aldeamento Vila Bicuda
+                Vila Bicuda Aldeamento Turístico
                 <br />
-                Rua dos Faisões, Loja 81.07
+                Loja 81.07
                 <br />
-                2750-689 Cascais
+                2750-689 Cascais, Portugal
               </p>
 
               <a
-                href="https://maps.app.goo.gl/EaVboE8rvSYPjt7y5"
+                href={GOOGLE_MAPS_URL}
                 target="_blank"
                 rel="noreferrer"
                 className="group mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[#0755c7]"
@@ -119,6 +127,7 @@ export default function Contact() {
 
             {/* PHONE + EMAIL */}
             <div className="grid gap-5 sm:grid-cols-2">
+              {/* PHONE */}
               <motion.a
                 href="tel:+351214860820"
                 initial={{
@@ -136,19 +145,32 @@ export default function Contact() {
                   duration: 0.7,
                   delay: 0.05,
                 }}
-                className="group rounded-[2rem] bg-[#0755c7] p-7 text-white transition-transform duration-300 hover:-translate-y-1 md:p-8"
+                className="
+                  group
+                  rounded-[2rem]
+                  bg-white
+                  p-7
+                  shadow-[0_15px_50px_rgba(6,43,97,0.05)]
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  md:p-8
+                "
               >
-                <Phone size={22} />
+                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#eaf4ff] text-[#0755c7]">
+                  <Phone size={20} />
+                </div>
 
-                <div className="mt-12 text-xs uppercase tracking-[0.15em] text-white/55">
+                <div className="mt-12 text-xs uppercase tracking-[0.15em] text-slate-400">
                   Telefone
                 </div>
 
-                <div className="mt-2 text-xl font-semibold">
+                <div className="mt-2 text-xl font-semibold text-[#062b61]">
                   214 860 820
                 </div>
               </motion.a>
 
+              {/* EMAIL */}
               <motion.a
                 href="mailto:bigbluelaundry@gmail.com"
                 initial={{
@@ -166,15 +188,28 @@ export default function Contact() {
                   duration: 0.7,
                   delay: 0.1,
                 }}
-                className="group overflow-hidden rounded-[2rem] bg-[#062b61] p-7 text-white transition-transform duration-300 hover:-translate-y-1 md:p-8"
+                className="
+                  group
+                  overflow-hidden
+                  rounded-[2rem]
+                  bg-white
+                  p-7
+                  shadow-[0_15px_50px_rgba(6,43,97,0.05)]
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  md:p-8
+                "
               >
-                <Mail size={22} />
+                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#eaf4ff] text-[#0755c7]">
+                  <Mail size={20} />
+                </div>
 
-                <div className="mt-12 text-xs uppercase tracking-[0.15em] text-white/50">
+                <div className="mt-12 text-xs uppercase tracking-[0.15em] text-slate-400">
                   Email
                 </div>
 
-                <div className="mt-2 break-all text-sm font-semibold md:text-base">
+                <div className="mt-2 break-all text-sm font-semibold text-[#062b61] md:text-base">
                   bigbluelaundry@gmail.com
                 </div>
               </motion.a>
@@ -202,11 +237,12 @@ export default function Contact() {
               className="relative min-h-[370px] overflow-hidden rounded-[2rem] bg-slate-200 md:min-h-[450px]"
             >
               <iframe
-                title="Lavandaria Bigblue - Cascais"
-                src="https://www.google.com/maps?q=Aldeamento%20Vila%20Bicuda%20Rua%20dos%20Faisoes%202750-689%20Cascais&output=embed"
+                title="Lavandaria Bigblue - Vila Bicuda"
+                src={GOOGLE_MAPS_EMBED_URL}
                 className="absolute inset-0 h-full w-full border-0"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
               />
             </motion.div>
 
@@ -286,7 +322,19 @@ export default function Contact() {
                     duration: 0.7,
                     delay: 0.05,
                   }}
-                  className="group flex items-center justify-between rounded-[2rem] bg-white p-6 shadow-[0_15px_50px_rgba(6,43,97,0.05)] transition-transform duration-300 hover:-translate-y-1"
+                  className="
+                    group
+                    flex
+                    items-center
+                    justify-between
+                    rounded-[2rem]
+                    bg-white
+                    p-6
+                    shadow-[0_15px_50px_rgba(6,43,97,0.05)]
+                    transition-all
+                    duration-300
+                    hover:-translate-y-1
+                  "
                 >
                   <div className="flex items-center gap-4">
                     <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#eaf4ff] text-[#0755c7]">
@@ -330,7 +378,19 @@ export default function Contact() {
                     duration: 0.7,
                     delay: 0.1,
                   }}
-                  className="group flex items-center justify-between rounded-[2rem] bg-white p-6 shadow-[0_15px_50px_rgba(6,43,97,0.05)] transition-transform duration-300 hover:-translate-y-1"
+                  className="
+                    group
+                    flex
+                    items-center
+                    justify-between
+                    rounded-[2rem]
+                    bg-white
+                    p-6
+                    shadow-[0_15px_50px_rgba(6,43,97,0.05)]
+                    transition-all
+                    duration-300
+                    hover:-translate-y-1
+                  "
                 >
                   <div className="flex items-center gap-4">
                     <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#eaf4ff] text-[#0755c7]">

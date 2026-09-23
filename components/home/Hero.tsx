@@ -253,14 +253,7 @@ export default function Hero() {
             />
 
             {/* BRAND */}
-            <div className="absolute left-7 top-7 z-10 md:left-10 md:top-10">
-              <div className="flex items-center gap-2">
-                <Bubbles size={16} className="text-[#9be8f3]" />
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-white/70">
-                  Lavandaria Bigblue
-                </span>
-              </div>
-            </div>
+
 
             {/* CENTRAL MACHINE */}
             <div className="absolute inset-0 flex items-center justify-center">
